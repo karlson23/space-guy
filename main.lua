@@ -22,7 +22,7 @@ function love.update(dt)
 	driftTimer(dt)
 	
 	spawner:update(dt)
-	spawner:target(love.mouse.getPosition())
+	spawner:target(player.x, player.y)
 end
 
 function love.draw()
