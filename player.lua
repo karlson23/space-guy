@@ -11,13 +11,7 @@ player.width = 10
 player.height = 10
 player.timer = 0
 
-function driftTimer(dt)
-    if player.timer == 15 then
-        player.timer = player.timer - dt
-        love.keypressed = false
-        player.vel = 50
-   end     
-end
+
 
 function playermovement(dt)
 		if love.keyboard.isDown("d") then

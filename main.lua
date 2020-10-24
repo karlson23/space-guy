@@ -18,9 +18,8 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
-	playermovement(dt)
-	driftTimer(dt)
-	
+	playermovement(dt)	
+
 	spawner:update(dt)
 	spawner:target(player.x, player.y)
 end
@@ -31,7 +30,6 @@ function love.draw()
 	lg.draw(player.main, player.x,player.y)
 
     lg.setColor(0,0,0)
-	lg.print(player.timer,0,0)
 	
 	spawner:draw()
 end
