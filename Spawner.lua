@@ -19,7 +19,7 @@ function Spawner()
 	function spawner:update(dt)
 		for i = #self.enemies, 1, -1 do
 			local e = self.enemies[i]
-			e:takeDamage(1)
+			
 			e:update(dt)
 			if e:isDead() then
 				table.remove(self.enemies, i)
