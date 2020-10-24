@@ -17,8 +17,13 @@ function Spawner()
 	end
 	
 	function spawner:update(dt)
-		for _, v in ipairs(self.enemies) do
-			v:update(dt)
+		for i = #self.enemies, 1, -1 do
+			local e = self.enemies[i]
+			
+			e:update(dt)
+			if e:isDead() then
+				table.remove(self.enemies, i)
+			end
 		end
 		for _, v in ipairs(self.o2s) do
 			v:update(dt)

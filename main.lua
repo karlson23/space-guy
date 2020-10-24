@@ -1,11 +1,11 @@
-require "common.Class"
+lg = love.graphics
 require "player"
 require "Spawner"
-lg = love.graphics
-
 
 
 function love.load()
+	Spawner()
+	love.keyboard.setTextInput(true)
 end
 
 
@@ -20,13 +20,18 @@ end
 function love.update(dt)
 	playermovement(dt)
 	driftTimer(dt)
-	Spawner()
+	
+	spawner:update(dt)
+	spawner:target(player.x, player.y)
 end
 
 function love.draw()
-	lg.setBackgroundColor(255,255,255)
+	lg.setBackgroundColor(1, 1, 1)
+	lg.setColor(1, 1, 1)
 	lg.draw(player.main, player.x,player.y)
 
     lg.setColor(0,0,0)
 	lg.print(player.timer,0,0)
+	
+	spawner:draw()
 end
