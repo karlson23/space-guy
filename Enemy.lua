@@ -11,6 +11,8 @@ function Enemy()
 	enm.speed = 16 + love.math.random(-3, 3)
 	enm.health = 100
 	
+	World:add(enm, enm.x, enm.y, sprite:getWidth(), sprite:getHeight())
+	
 	function enm:draw()
 		lg.draw(sprite, self.x, self.y)
 		
@@ -20,8 +22,9 @@ function Enemy()
 
 	function enm:update(dt)
 		local a = -math.atan2(self.targetY - self.y, self.targetX - self.x)
-		self.x = self.x + math.cos(a) * self.speed * dt
-		self.y = self.y - math.sin(a) * self.speed * dt
+		local cols
+		self.x, self.y, cols = World:move(self, self.x + math.cos(a) * self.speed * dt, self.y - math.sin(a) * self.speed * dt)
+		World.freeCollisions(cols)
 	end
 	
 	function enm:target(x, y)

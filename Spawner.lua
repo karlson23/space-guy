@@ -22,6 +22,7 @@ function Spawner()
 			
 			e:update(dt)
 			if e:isDead() then
+				World:remove(e)
 				table.remove(self.enemies, i)
 			end
 		end
